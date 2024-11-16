@@ -14,53 +14,43 @@
             color: #fff;
         }
 
-        h1 {
-            font-size: 4rem;
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
             margin-top: 50px;
         }
-        h2 {
-            font-size: 2rem;
-            margin: 20px 0;
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
         }
+
         p {
-            font-size: 1.2rem;
-            margin: 20px auto;
-            max-width: 700px;
-        }
-
-        .video-container {
-            position: relative;
-            width: 80%;
-            max-width: 800px; /* Max width to avoid stretching */
-            padding-bottom: 45%; /* 16:9 aspect ratio */
-            height: 0;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            overflow: hidden; /* Hide overflow to remove black bars */
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none; /* Remove border to avoid black bars */
+            font-size: 1.5rem;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
-    <h2>A Special Video Just for You!</h2>
-    <p>
-        Nancy, here’s something to make your day extra special. Hit play and enjoy! 💖
-    </p>
+    <div class="container">
+        <header>
+            <h1>🎉 Happy Birthday, Nancy Karankal! 🎉</h1>
+        </header>
 
-    <div class="video-container">
-        <iframe src="https://drive.google.com/file/d/1k3KARkk5VVCmzSKKfTeu6e_urIEFpNcO/preview" allow="autoplay"></iframe>
+        <p>
+            Wishing you a day filled with love, joy, and all your favorite things. You are the best sister anyone could ask for, and I’m so grateful to have you in my life. Enjoy every moment of your special day! 🎂💖
+        </p>
+
+        <p>
+            Love, your brother
+        </p>
     </div>
-
-    <p>Wishing you all the happiness in the world today and always! 🎂</p>
 </body>
 </html>
