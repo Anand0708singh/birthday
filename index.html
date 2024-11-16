@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Nancy!</title>
     <style>
-        /* Basic Styling */
         body {
             margin: 0;
             padding: 0;
@@ -16,7 +15,7 @@
             overflow-x: hidden;
         }
 
-        /* Header and Message Styling */
+        /* Header and Text Styling */
         h1 {
             font-size: 4rem;
             margin-top: 50px;
@@ -24,7 +23,7 @@
         }
         h2 {
             font-size: 2rem;
-            margin: 20px 0;
+            margin: 10px 0;
             animation: fadeIn 3s ease-in-out;
         }
         p {
@@ -40,7 +39,6 @@
             max-width: 80%;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 5s ease-in-out;
         }
 
         /* Button Styling */
@@ -60,7 +58,17 @@
             transform: scale(1.1);
         }
 
-        /* Surprise Popup */
+        /* Countdown Timer */
+        .countdown {
+            font-size: 1.5rem;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* Surprise Popups */
         #popup {
             position: fixed;
             top: 50%;
@@ -76,66 +84,45 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* Confetti Animation */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ff6f91;
-            animation: fall 3s infinite;
+        /* Balloon Animation */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ff758c, #ff6f91);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
         }
-
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px) rotate(10deg); }
+            100% { transform: translateY(-800px) rotate(-10deg); }
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-50px) rotate(0); }
-            100% { transform: translateY(100vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
-    <h2>Celebrating You Today!</h2>
+    <h2>Your Day is Here!</h2>
     <p>
-        Nancy, you’re a truly remarkable person. May your birthday bring you joy, love, and all the things that make you smile. 💖
+        Nancy, you’re a truly wonderful person. I hope your birthday is full of surprises, joy, and endless happiness!  
+        Click around and discover fun surprises just for you. 💖
     </p>
-    <img src="https://via.placeholder.com/600x400.png?text=Happy+Birthday,+Nancy!" alt="Birthday Celebration">
-    <button class="button" onclick="playMusic()">🎵 Play Birthday Song 🎵</button>
-    <button class="button" onclick="showPopup()">🎁 Show Surprise 🎁</button>
 
-    <!-- Popup for Surprise -->
-    <div id="popup">
-        <h3>🌟 You’re Amazing! 🌟</h3>
-        <p>Wishing you love, laughter, and endless happiness on your special day. 💕</p>
-        <button class="button" onclick="hidePopup()">Close</button>
+    <!-- Countdown Timer -->
+    <div class="countdown" id="countdown">
+        🎂 Countdown to Your Next Birthday: <span id="timer"></span>
     </div>
 
-    <!-- Audio Player -->
-    <audio id="birthdaySong" src="https://example.com/happy_birthday_song.mp3" preload="auto"></audio>
+    <!-- Balloons for Interactive Surprise -->
+    <div class="balloon" style="left: 20%; animation-delay: 0s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 50%; animation-delay: 2s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 4s;" onclick="popBalloon(this)"></div>
 
-    <!-- Confetti Animation -->
-    <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="confetti" style="left: 30%; animation-delay: 0.5s;"></div>
-    <div class="confetti" style="left: 50%; animation-delay: 1s;"></div>
-    <div class="confetti" style="left: 70%; animation-delay: 1.5s;"></div>
-    <div class="confetti" style="left: 90%; animation-delay: 2s;"></div>
-
-    <script>
-        function playMusic() {
-            const audio = document.getElementById('birthdaySong');
-            audio.play();
-        }
-
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-        }
-
-        function hidePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+    <!-- Popup Surprise -->
+    <div id="popup">
+        <h3>🎁 You Found a Surprise! 🎁</h3>
