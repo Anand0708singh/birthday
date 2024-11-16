@@ -15,7 +15,6 @@
             overflow-x: hidden;
         }
 
-        /* Header and Text Styling */
         h1 {
             font-size: 4rem;
             margin-top: 50px;
@@ -33,32 +32,6 @@
             animation: fadeIn 4s ease-in-out;
         }
 
-        /* Image Styling */
-        img {
-            margin: 20px auto;
-            max-width: 80%;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Button Styling */
-        .button {
-            margin: 20px 10px;
-            padding: 15px 30px;
-            background: #ff6f91;
-            color: #fff;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
-        }
-        .button:hover {
-            background: #ff4970;
-            transform: scale(1.1);
-        }
-
-        /* Countdown Timer */
         .countdown {
             font-size: 1.5rem;
             margin: 30px auto;
@@ -68,7 +41,36 @@
             display: inline-block;
         }
 
-        /* Surprise Popups */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ff758c, #ff6f91);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            cursor: pointer;
+        }
+        .balloon:before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #fff;
+            transform: translateX(-50%);
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px) rotate(10deg); }
+            100% { transform: translateY(-800px) rotate(-10deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         #popup {
             position: fixed;
             top: 50%;
@@ -81,36 +83,29 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             display: none;
             text-align: center;
-            animation: fadeIn 1s ease-in-out;
         }
 
-        /* Balloon Animation */
-        .balloon {
-            position: absolute;
-            bottom: -100px;
-            width: 50px;
-            height: 70px;
-            background: radial-gradient(circle, #ff758c, #ff6f91);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff6f91;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-100px) rotate(10deg); }
-            100% { transform: translateY(-800px) rotate(-10deg); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .button:hover {
+            background: #ff4970;
         }
     </style>
 </head>
 <body>
     <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
-    <h2>Your Day is Here!</h2>
+    <h2>Your Special Day is Here!</h2>
     <p>
-        Nancy, you’re a truly wonderful person. I hope your birthday is full of surprises, joy, and endless happiness!  
-        Click around and discover fun surprises just for you. 💖
+        Nancy, you’re a truly amazing person. Wishing you a day filled with love, laughter, and endless joy!  
+        Click around and discover surprises waiting for you. 💖
     </p>
 
     <!-- Countdown Timer -->
@@ -118,7 +113,7 @@
         🎂 Countdown to Your Next Birthday: <span id="timer"></span>
     </div>
 
-    <!-- Balloons for Interactive Surprise -->
+    <!-- Balloons -->
     <div class="balloon" style="left: 20%; animation-delay: 0s;" onclick="popBalloon(this)"></div>
     <div class="balloon" style="left: 50%; animation-delay: 2s;" onclick="popBalloon(this)"></div>
     <div class="balloon" style="left: 80%; animation-delay: 4s;" onclick="popBalloon(this)"></div>
@@ -126,3 +121,59 @@
     <!-- Popup Surprise -->
     <div id="popup">
         <h3>🎁 You Found a Surprise! 🎁</h3>
+        <p>
+            Thank you for being the amazing person you are. This surprise is just a small way to celebrate you! 💕
+        </p>
+        <button class="button" onclick="hidePopup()">Close</button>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="birthdaySong" src="https://example.com/happy_birthday_song.mp3" preload="auto"></audio>
+    <p>
+        <button class="button" onclick="playMusic()">🎵 Play Birthday Song 🎵</button>
+    </p>
+
+    <script>
+        // Countdown Timer Logic
+        const nextBirthday = new Date("2024-11-20T00:00:00");
+        const countdown = document.getElementById('timer');
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = nextBirthday - now;
+            if (diff <= 0) {
+                countdown.innerHTML = "🎉 It's Your Birthday Today! 🎉";
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            countdown.innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+        }
+        setInterval(updateTimer, 1000);
+
+        // Balloon Pop Logic
+        function popBalloon(balloon) {
+            balloon.style.animation = "none"; // Stops animation
+            balloon.style.display = "none"; // Hides the balloon
+            showPopup(); // Trigger surprise
+        }
+
+        // Popup Logic
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Music Player
+        function playMusic() {
+            const audio = document.getElementById('birthdaySong');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
