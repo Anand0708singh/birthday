@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Nancy!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-top: 50px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+            animation: fadeIn 4s ease-in-out;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            max-width: 700px;
+            animation: fadeIn 5s ease-in-out;
+        }
+        img {
+            margin: 20px auto;
+            max-width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 6s ease-in-out;
+        }
+        .surprise-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: #ff6f91;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: fadeIn 7s ease-in-out;
+        }
+        .surprise-button:hover {
+            background: #ff4970;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .hidden-message {
+            display: none;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
+    <h2>Your day is finally here!</h2>
+    <p>
+        Nancy, you’re a truly special person, and I hope today is as amazing as you are!  
+        May this year bring you endless joy, success, and all the happiness you deserve. 💖
+    </p>
+    <img src="https://via.placeholder.com/600x400.png?text=Happy+Birthday,+Nancy!" alt="Happy Birthday">
+    <p>Click the button below for a special surprise 🎁</p>
+    <button class="surprise-button" onclick="showSurprise()">🎊 Show Surprise 🎊</button>
+    <div class="hidden-message" id="hiddenMessage">
+        🌟 You’re the star of the day! 🌟  
+        Nancy, I wish you nothing but love, laughter, and happiness on your birthday and always. 💕
+    </div>
+    <audio id="birthdaySong" src="https://example.com/happy_birthday_song.mp3" preload="auto"></audio>
+    <p>
+        <button class="surprise-button" onclick="playMusic()">🎵 Play Birthday Song 🎵</button>
+    </p>
+    <script>
+        function showSurprise() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+        }
+
+        function playMusic() {
+            const audio = document.getElementById('birthdaySong');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
