@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Pop for Nancy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ff758c, #ff6f91);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px) rotate(10deg); }
+            100% { transform: translateY(-800px) rotate(-10deg); }
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #0099cc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: #0077aa;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎈 Pop the Balloons for a Surprise! 🎈</h1>
+    <p>Click on the balloons to reveal birthday wishes for Nancy!</p>
+
+    <div class="balloon" style="left: 20%; animation-delay: 0s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 50%; animation-delay: 2s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 4s;" onclick="popBalloon(this)"></div>
+
+    <a href="index.html" class="button">Back to Homepage</a>
+
+    <script>
+        function popBalloon(balloon) {
+            balloon.style.display = 'none';
+            alert('🎉 Happy Birthday, Nancy! 🎉');
+        }
+    </script>
+</body>
+</html>
