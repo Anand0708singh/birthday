@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch-to-Reveal for Nancy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #fddb92, #d1fdff);
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+            color: #444;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+
+        canvas {
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #4caf50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: #388e3c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎁 Scratch to Reveal Your Gift! 🎁</h1>
+    <p>Use your mouse or finger to scratch off the area below to see your surprise!</p>
+
+    <!-- Scratch Canvas -->
+    <canvas id="scratchCanvas" width="300" height="300"></canvas>
+
+    <!-- Buttons -->
+    <a href="index.html" class="button">Back to Homepage</a>
+
+    <script>
+        const canvas = document.getElementById("scratchCanvas");
+        const ctx = canvas.getContext("2d");
+        const revealMessage = "🎉 You’re Amazing, Nancy! 🎉";
+
+        // Draw a scratchable surface
+        ctx.fillStyle = "#d1fdff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#888";
+        ctx.font = "20px Arial";
+        ctx.fillText("Scratch here!", canvas.width / 2 - 60, canvas.height / 2);
+
+        // Handle scratching effect
+        let isScratching = false;
+        canvas.addEventListener("mousedown", () => (isScratching = true));
+        canvas.addEventListener("mouseup", () => (isScratching = false));
+        canvas.addEventListener("mousemove", scratch);
+
+        // Mobile support
+        canvas.addEventListener("touchstart", () => (isScratching = true));
+        canvas.addEventListener("touchend", () => (isScratching = false));
+        canvas.addEventListener("touchmove", (e) => {
+            const touch = e.touches[0];
+            scratch(touch);
+        });
+
+        function scratch(e) {
+            if (!isScratching) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
+            const y = e.clientY ? e.clientY - rect.top : e.touches[0].clientY - rect.top;
+
+            ctx.clearRect(x - 15, y - 15, 30, 30); // Scratch area
+        }
+
+        // Clear the canvas after scratching to reveal the message
+        canvas.addEventListener("mouseup", () => {
+            if (isCanvasCleared()) {
+                setTimeout(() => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "#333";
+                    ctx.font = "25px Arial";
+                    ctx.textAlign = "center";
+                    ctx.fillText(revealMessage, canvas.width / 2, canvas.height / 2);
+                }, 300);
+            }
+        });
+
+        function isCanvasCleared() {
+            const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let clearedPixels = 0;
+
+            for (let i = 0; i < pixels.length; i += 4) {
+                if (pixels[i + 3] === 0) clearedPixels++; // Check transparency
+            }
+
+            return clearedPixels > pixels.length / 8; // At least 12.5% scratched
+        }
+    </script>
+</body>
+</html>
