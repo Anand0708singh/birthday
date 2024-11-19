@@ -33,9 +33,15 @@
             animation: slideIn 2s ease-in-out;
         }
 
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
         video {
             max-width: 80%;
-            margin: 20px auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border: 3px solid #ff9a9e;
@@ -102,14 +108,24 @@
     <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
     <p>
         Nancy, you are a shining star! Wishing you a day full of love, laughter, and joy.
-        Here’s a special video just for you. 💖
+        Here are some special videos just for you. 💖
     </p>
 
     <!-- Video Section -->
-    <video controls autoplay muted loop>
-        <source src="https://drive.google.com/uc?export=download&id=1k3KARkk5VVCmzSKKfTeu6e_urIEFpNcO" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+        <video controls autoplay muted loop>
+            <source src="https://drive.google.com/uc?export=download&id=1k3KARkk5VVCmzSKKfTeu6e_urIEFpNcO" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls autoplay muted loop>
+            <source src="https://drive.google.com/uc?export=download&id=1jGlifBka9GbSUSpwH2YEqVDbH7hMqmcL" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls autoplay muted loop>
+            <source src="https://drive.google.com/uc?export=download&id=1iPYe53rbN3cKR7P1daZaPNSL4qDsn2Bv" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <!-- Confetti Effect -->
     <div class="confetti"></div>
