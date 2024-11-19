@@ -18,6 +18,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        /* Overlay to darken the background */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Darken background */
+            z-index: -1; /* Place the overlay behind the text */
         }
 
         h1 {
@@ -92,6 +104,8 @@
     </style>
 </head>
 <body>
+    <div class="overlay"></div> <!-- Darkening overlay to make text stand out -->
+
     <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
     <p>
         Nancy, you are a shining star in the lives of everyone who knows you. 🌟
