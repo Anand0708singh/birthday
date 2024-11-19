@@ -15,7 +15,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
         }
 
@@ -35,22 +35,6 @@
             margin: 20px auto;
             max-width: 700px;
             animation: slideIn 2s ease-in-out;
-        }
-
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        video {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 3px solid #ff9a9e;
-            animation: pulse 1.5s infinite;
         }
 
         .button {
@@ -102,39 +86,14 @@
                 opacity: 1;
             }
         }
-
-        @keyframes pulse {
-            0%, 100% { border-color: #ff9a9e; }
-            50% { border-color: #fad0c4; }
-        }
     </style>
 </head>
 <body>
     <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
     <p>
         Nancy, you are a shining star! Wishing you a day full of love, laughter, and joy.
-        Here are some special videos just for you. 💖
+        May all your dreams come true. 💖
     </p>
-
-    <!-- Video Section -->
-    <div class="video-container">
-        <video controls autoplay muted loop>
-            <source src="https://raw.githubusercontent.com/Anand0708singh/birthday/main/Vid1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls autoplay muted loop>
-            <source src="https://raw.githubusercontent.com/Anand0708singh/birthday/main/Vid2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls autoplay muted loop>
-            <source src="https://raw.githubusercontent.com/Anand0708singh/birthday/main/Vid3.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls autoplay muted loop>
-            <source src="https://raw.githubusercontent.com/Anand0708singh/birthday/main/Vid4.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
 
     <!-- Confetti Effect -->
     <script>
