@@ -92,7 +92,8 @@
     <script>
         const canvas = document.getElementById("scratchCanvas");
         const ctx = canvas.getContext("2d");
-        const revealMessage = "🎉 You’re Amazing, Nancy! 🎉";
+        const image = new Image();
+        image.src = "birth.png"; // Path to your image
 
         // Draw a scratchable surface
         ctx.fillStyle = "#888";
@@ -125,15 +126,12 @@
             ctx.clearRect(x - 15, y - 15, 30, 30); // Scratch area
         }
 
-        // Clear the canvas after scratching to reveal the message
+        // Clear the canvas after scratching to reveal the image
         canvas.addEventListener("mouseup", () => {
             if (isCanvasCleared()) {
                 setTimeout(() => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = "#333";
-                    ctx.font = "25px Arial";
-                    ctx.textAlign = "center";
-                    ctx.fillText(revealMessage, canvas.width / 2, canvas.height / 2);
+                    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
                     createConfetti(); // Add confetti effect
                 }, 300);
             }
