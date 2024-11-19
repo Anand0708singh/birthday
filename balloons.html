@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Nancy!</title>
+    <title>Balloon Pop for Nancy</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
             color: #fff;
-            overflow: hidden; /* To keep confetti within the viewport */
+            overflow: hidden; /* Keep the balloons within the viewport */
         }
 
         h1 {
@@ -22,24 +22,31 @@
         }
 
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 5px #ff9a9e, 0 0 10px #fad0c4; }
-            50% { text-shadow: 0 0 20px #fbc2eb, 0 0 30px #fad0c4; }
+            0%, 100% { text-shadow: 0 0 5px #74ebd5, 0 0 10px #acb6e5; }
+            50% { text-shadow: 0 0 20px #acb6e5, 0 0 30px #74ebd5; }
         }
 
         p {
             font-size: 1.2rem;
             margin: 20px auto;
             max-width: 700px;
-            animation: slideIn 2s ease-in-out;
         }
 
-        video {
-            max-width: 80%;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 3px solid #ff9a9e;
-            animation: pulse 1.5s infinite;
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle, #ff758c, #ff6f91);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-150px) rotate(10deg); }
+            100% { transform: translateY(-1000px) rotate(-10deg); }
         }
 
         .button {
@@ -47,7 +54,7 @@
             padding: 15px 30px;
             font-size: 1.2rem;
             color: #fff;
-            background: #ff6f91;
+            background: #0099cc;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -57,17 +64,8 @@
         }
 
         .button:hover {
-            background: #ff4970;
+            background: #0077aa;
             transform: scale(1.05);
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff6f91;
-            opacity: 0.7;
-            animation: confetti-fall 4s infinite ease-in-out;
         }
 
         @keyframes confetti-fall {
@@ -81,52 +79,47 @@
             }
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { border-color: #ff9a9e; }
-            50% { border-color: #fad0c4; }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6f91;
+            opacity: 0.7;
+            animation: confetti-fall 4s infinite ease-in-out;
         }
     </style>
 </head>
 <body>
-    <h1>🎉 Happy Birthday, Nancy! 🎉</h1>
-    <p>
-        Nancy, you are a shining star! Wishing you a day full of love, laughter, and joy.
-        Here’s a special video just for you. 💖
-    </p>
+    <h1>🎈 Pop the Balloons for a Surprise! 🎈</h1>
+    <p>Click on the balloons to reveal birthday wishes for Nancy!</p>
 
-    <!-- Video Section -->
-    <video controls autoplay muted loop>
-        <source src="https://drive.google.com/uc?export=download&id=YOUR_VIDEO_FILE_ID" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Confetti Effect -->
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
-    <div class="confetti"></div>
+    <!-- Balloons -->
+    <div class="balloon" style="left: 20%; animation-delay: 0s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 50%; animation-delay: 2s;" onclick="popBalloon(this)"></div>
+    <div class="balloon" style="left: 80%; animation-delay: 4s;" onclick="popBalloon(this)"></div>
 
     <a href="index.html" class="button">Back to Homepage</a>
 
     <script>
-        // JavaScript to create multiple confetti elements
-        for (let i = 0; i < 50; i++) {
-            let confetti = document.createElement("div");
-            confetti.className = "confetti";
-            confetti.style.left = Math.random() * 100 + "vw";
-            document.body.appendChild(confetti);
+        function popBalloon(balloon) {
+            balloon.style.display = 'none';
+            createConfetti();
+            alert('🎉 Happy Birthday, Nancy! 🎉');
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.backgroundColor = getRandomColor();
+                document.body.appendChild(confetti);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ["#ff6f91", "#ff758c", "#74ebd5", "#acb6e5"];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
     </script>
 </body>
