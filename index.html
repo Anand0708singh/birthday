@@ -3,119 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nancy's Birthday Wishes</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #f6d365, #fda085);
-            color: #fff;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-top: 50px;
-            animation: fadeIn 2s ease-in;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin: 20px auto;
-            max-width: 700px;
-            animation: slideIn 2s ease-in-out;
-        }
-
-        .countdown {
-            font-size: 2rem;
-            margin-top: 20px;
-        }
-
-        .buttons {
-            margin-top: 20px;
-        }
-
-        .button {
-            margin: 15px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: #ff6f91;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .button:hover {
-            background: #ff4970;
-            transform: scale(1.05);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    </style>
+    <title>Happy Birthday, Akshu!</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>🎉 Welcome to Nancy's Birthday Celebration! 🎉</h1>
-    <p>Click on the links below to explore Nancy's special birthday surprises:</p>
-
-    <div class="countdown" id="countdown">
-        Counting down to Nancy's birthday...
+<body class="home">
+    <div class="container">
+        <h1>Happy Birthday, Akshu!</h1>
+        <p>Welcome to your special birthday website! 🎉🎂</p>
+        <p>Today, on **28th November**, we celebrate the amazing person you are.</p>
+        <a href="thankyou.html" class="btn">Click to See Your Surprise</a>
     </div>
-
-    <div class="buttons">
-        <a href="heartfelt.html" class="button">Heartfelt Wish</a>
-        <a href="balloons.html" class="button">Balloon Pop Game</a>
-        <a href="collage.html" class="button">Photo Collage</a>
-        <a href="surprise.html" class="button">Surprise Gift</a>
-         <a href="quotes.html" class="button">Birthday Wish</a>
-    </div>
-
-    <script>
-        // Countdown Timer
-        const countdownElement = document.getElementById('countdown');
-        const birthday = new Date('November 20, 2024 00:00:00').getTime();
-
-        const updateCountdown = () => {
-            const now = new Date().getTime();
-            const distance = birthday - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownElement.innerHTML = `🎂 ${days}d ${hours}h ${minutes}m ${seconds}s left until Nancy's Birthday! 🎂`;
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                countdownElement.innerHTML = "🎉 It's Nancy's Birthday! 🎉";
-            }
-        };
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
-    </script>
 </body>
 </html>
